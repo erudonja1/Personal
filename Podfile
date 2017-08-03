@@ -6,11 +6,11 @@
 target 'Personal' do
 
 pod 'Alamofire'
-pod 'MBProgressHUD', '~> 0.9.0'
+pod 'MBProgressHUD'
 pod 'SwiftyJSON'
-pod 'Alamofire-SwiftyJSON', :podspec => 'https://raw.githubusercontent.com/pdutourgeerling/Alamofire-SwiftyJSON-Podspec/master/Alamofire-SwiftyJSON.podspec'
+pod 'ObjectMapper'
 pod 'AlamofireImage'
-pod 'Spring', :git => 'https://github.com/MengTo/Spring.git', :branch => 'swift2'
+pod 'Spring', :git => 'https://github.com/MengTo/Spring.git', :branch => 'swift3'
 pod 'FontAwesome.swift'
 end
 

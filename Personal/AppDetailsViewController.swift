@@ -37,7 +37,7 @@ class AppDetailsViewController: UITableViewController  {
         })
         self.view.backgroundColor = UIColor(hex:"#DBE0E4")
         self.headerView.backgroundColor = UIColor(hex:"#DBE0E4")
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "addBundle")
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(AppDetailsViewController.addBundle))
         bundlesTable.tableFooterView = UIView()
     }
     
@@ -45,24 +45,24 @@ class AppDetailsViewController: UITableViewController  {
         super.didReceiveMemoryWarning()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         taglineText.scrollRangeToVisible(NSRange(location:0, length:0))
         bundlesTable.reloadData()
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier( "BundleCell", forIndexPath: indexPath) as! BundleTableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell( withIdentifier: "BundleCell", for: indexPath) as! BundleTableViewCell
         cell.nameLabel!.text = currentUseCase!.bundles[indexPath.row].name
         cell.descriptionLabel!.text = currentUseCase!.bundles[indexPath.row].description
-        cell.arrowLabel.font = UIFont.fontAwesomeOfSize(20)
-        cell.arrowLabel.text = String.fontAwesomeIconWithCode("fa-angle-right")
+        cell.arrowLabel.font = UIFont.fontAwesome(ofSize: 20)
+        cell.arrowLabel.text = String.fontAwesomeIcon(code: "fa-angle-right")
         cell.arrowLabel.textColor = UIColor(hex: "#2e3e4d")
         if currentUseCase!.bundles[indexPath.row].iconImage == nil {
             imgService.getBundleImage(currentUseCase!.bundles[indexPath.row].id, completionHandler: {(img, requestId) in
                 if img != nil && requestId == currentUseCase!.bundles[indexPath.row].id  {
                     cell.iconImage?.image = img
                     currentUseCase!.bundles[indexPath.row].iconImage = img
-                    self.bundlesTable.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+                    self.bundlesTable.reloadRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
                 } else {
                     cell.iconImage?.image = UIImage()
                 }
@@ -72,29 +72,29 @@ class AppDetailsViewController: UITableViewController  {
         }
         cell.iconImage?.layer.cornerRadius = 8.0
         cell.iconImage?.clipsToBounds = true
-        cell.layoutMargins = UIEdgeInsetsZero;
+        cell.layoutMargins = UIEdgeInsets.zero;
         return cell
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return currentUseCase!.bundles.count
     }
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let indexPath = tableView.indexPathForSelectedRow!
-        let cell = bundlesTable.cellForRowAtIndexPath(indexPath)! as! BundleTableViewCell
+        let cell = bundlesTable.cellForRow(at: indexPath)! as! BundleTableViewCell
         currentBundle = currentUseCase!.bundles.filter({$0.name == cell.nameLabel!.text}).first
         if currentBundle != nil{
-            self.performSegueWithIdentifier("showBundleDetails", sender: self)
+            self.performSegue(withIdentifier: "showBundleDetails", sender: self)
         }
 
     }
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 55;
     }
     
     func setConstraints(){}
     func addBundle(){
-         self.performSegueWithIdentifier("createNewBundle", sender: self)
+         self.performSegue(withIdentifier: "createNewBundle", sender: self)
     }
     
 }

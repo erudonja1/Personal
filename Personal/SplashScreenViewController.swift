@@ -15,16 +15,10 @@ class SplashScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //First way
-        /*UIView.animateWithDuration(0.7, animations: {
-        self.titleLabel.center.x += self.view.bounds.width
-        }) { (fin) -> Void in
-        if fin==true
-        {
-        self.performSegueWithIdentifier("showMainView", sender: self)
-        }
-        }*/
-        
+        Cloud.font = UIFont.fontAwesome(ofSize: 100)
+        Cloud.text = String.fontAwesomeIcon(name: FontAwesome.cloud)
+        Cloud.textColor = UIColor(hex:"#F4F5F7")
+
         //Second way
         //come in
         titleLabel.textColor = UIColor(hex:"#DBE0E4")
@@ -32,32 +26,30 @@ class SplashScreenViewController: UIViewController {
         titleLabel.duration = 3;
         titleLabel.autohide = true;
         titleLabel.animate();
-        Cloud.font = UIFont.fontAwesomeOfSize(100)
-        Cloud.text = String.fontAwesomeIconWithName(FontAwesome.Cloud)
-        Cloud.textColor = UIColor(hex:"#F4F5F7")
         Cloud.animation = "squeezeLeft"
         Cloud.duration = 2;
         Cloud.autohide = true;
         Cloud.animate();
+
         
         //when animations are finished, do segue and go to initial view
-        _ = NSTimer.scheduledTimerWithTimeInterval(3, target: self, selector: "doSegue", userInfo: nil, repeats: true)
+        _ = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(SplashScreenViewController.doSegue), userInfo: nil, repeats: true)
     }
     
     func doSegue(){
-        self.performSegueWithIdentifier("showMainView", sender: self)
+        self.performSegue(withIdentifier: "showMainView", sender: self)
     }
     
     @IBOutlet weak var Cloud: SpringLabel!
     @IBOutlet weak var titleLabel: SpringLabel!
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         
     }
     

@@ -18,8 +18,8 @@ class BundleCreateViewController: UIViewController, UITextFieldDelegate, UITextV
     @IBOutlet weak var iconImage: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: "done")
-        idTextField.addTarget(self, action: "idFieldDidChange:", forControlEvents: UIControlEvents.EditingChanged)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(BundleCreateViewController.done))
+        idTextField.addTarget(self, action: #selector(BundleCreateViewController.idFieldDidChange(_:)), for: UIControlEvents.editingChanged)
         disableFields()
         idTextField.delegate = self
         nameTextField.delegate = self
@@ -30,13 +30,13 @@ class BundleCreateViewController: UIViewController, UITextFieldDelegate, UITextV
         super.didReceiveMemoryWarning()
         
     }
-    func textFieldShouldReturn(textField: UITextField) -> Bool
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool
     {
         textField.resignFirstResponder()
         return true;
     }
     
-    func idFieldDidChange(textField: UITextField){
+    func idFieldDidChange(_ textField: UITextField){
         clearFields()
         if idTextField.text! != newBundle.id
         {
@@ -64,14 +64,14 @@ class BundleCreateViewController: UIViewController, UITextFieldDelegate, UITextV
         iconImage.image = UIImage()
     }
     func enableFields(){
-        nameTextField.enabled = true
-        descriptionText.editable = true
-        navigationItem.rightBarButtonItem?.enabled = true
+        nameTextField.isEnabled = true
+        descriptionText.isEditable = true
+        navigationItem.rightBarButtonItem?.isEnabled = true
     }
     func disableFields(){
-        nameTextField.enabled = false
-        descriptionText.editable = false
-        navigationItem.rightBarButtonItem?.enabled = false
+        nameTextField.isEnabled = false
+        descriptionText.isEditable = false
+        navigationItem.rightBarButtonItem?.isEnabled = false
     }
     func done(){
         newBundle = Bundle(id: idTextField.text!,name: nameTextField.text!,description: descriptionText.text)
@@ -87,7 +87,7 @@ class BundleCreateViewController: UIViewController, UITextFieldDelegate, UITextV
             useCases?.append(currentUseCase!)
         }
         
-        navigationController?.popViewControllerAnimated(true)
+        navigationController?.popViewController(animated: true)
     }
     
 }

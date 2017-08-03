@@ -26,13 +26,13 @@ class AppsViewController: UITableViewController {
     }
     
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier( "UseCaseCell", forIndexPath: indexPath) as! UseCaseTableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell( withIdentifier: "UseCaseCell", for: indexPath) as! UseCaseTableViewCell
         
         cell.Name!.text = currentCategory!.useCases[indexPath.row].name
         cell.Name!.textColor = UIColor(hex: "#2e3e4d")
-        cell.Arrow.font = UIFont.fontAwesomeOfSize(20)
-        cell.Arrow.text = String.fontAwesomeIconWithCode("fa-angle-right")
+        cell.Arrow.font = UIFont.fontAwesome(ofSize: 20)
+        cell.Arrow.text = String.fontAwesomeIcon(code: "fa-angle-right")
         cell.Arrow.textColor = UIColor(hex: "#2e3e4d")
         cell.backgroundColor = UIColor(hex:"#DBE0E4")
         
@@ -41,7 +41,7 @@ class AppsViewController: UITableViewController {
                 if img != nil {
                     cell.Icon?.image = img
                     currentCategory!.useCases[indexPath.row].iconImage = img
-                    self.appsTable.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+                    self.appsTable.reloadRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
                 } else {
                     cell.imageView?.image = UIImage()
                 }
@@ -53,22 +53,22 @@ class AppsViewController: UITableViewController {
         cell.Icon?.clipsToBounds = true
         return cell
     }
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let indexPath = tableView.indexPathForSelectedRow!
-        let cell = appsTable.cellForRowAtIndexPath(indexPath)! as! UseCaseTableViewCell
+        let cell = appsTable.cellForRow(at: indexPath)! as! UseCaseTableViewCell
         currentUseCase = useCases?.filter({$0.name == cell.Name!.text}).first
         if currentUseCase == nil{
             currentUseCase = currentCategory!.useCases.filter({$0.name == cell.Name!.text}).first
         }
-        self.performSegueWithIdentifier("showAppDetails", sender: self)
+        self.performSegue(withIdentifier: "showAppDetails", sender: self)
     }
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return currentCategory!.useCases.count
     }
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80;
     }
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let backItem = UIBarButtonItem()
         backItem.title = ""
         navigationItem.backBarButtonItem = backItem

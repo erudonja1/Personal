@@ -4,11 +4,6 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Alamofire-SwiftyJSON.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Alamofire.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -34,6 +29,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>ObjectMapper.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Personal.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -52,47 +52,47 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>37497E34C6D8DB9DDE5BF13B247CA9AD</key>
+		<key>3D88BA6CB52BEA76BCEBDDAAB6B8E486</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4B2F30D90D85A544E9EFE2A49D392C25</key>
+		<key>41FA54D12162DAD51D02FC58A2CD5034</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>522A68050AB8A3B07584318C43F7C07D</key>
+		<key>4F372993D24B676D2CC2C6D08C8104E0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>527D0F4E0EC2D1F83895D3C12D9BFBAA</key>
+		<key>6991F49AED797519343B1F4591001691</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6D9EDCF48A5AA1A0B1FB393CB904CF6F</key>
+		<key>88E9EC28B8B46C3631E6B242B50F4442</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>744D8936F538391EE0E1CD29AC2DAC87</key>
+		<key>9EFE4C70245EE2857D336B8B9FA4E825</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7FBD9311F529FF88743F90C13EFC523B</key>
+		<key>BD838F4B3AB0C8F3784BAE6D9EB8A8CE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A1BF58736B6CCECB5DB30E2108366143</key>
+		<key>CD11672B6619C297B6AEE3DFB8213C59</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E61CE3B6DFA1FE6B3E296965C76C0E10</key>
+		<key>CD6C9FB6B052E1CF663F8A56041EA163</key>
 		<dict>
 			<key>primary</key>
 			<true/>
